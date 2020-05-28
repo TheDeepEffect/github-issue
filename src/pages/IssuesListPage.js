@@ -1,24 +1,40 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {useSelector, useDispatch} from "react-redux"
 import { useMount } from 'react-use'
 import { loadIssues } from '../redux/actions'
 import { history } from '../config/routes'
+import { IssueListContainer } from '../container/IssueListContainer'
+import { routes } from '../config/routes_config'
+import { PaginationComponent } from '../components/PaginationComponent'
 
 
 export const IssueListPage=()=>{
-    const {currentPage,issues,loading}=useSelector(state=>state)
+    const {currentPage,issues,loading,errors}=useSelector(state=>state)
     const dispatch= useDispatch()
-
-    useMount(()=>{
+    
+    useEffect(()=>{
         dispatch(loadIssues(`repos/facebook/react/issues?page=${currentPage}`))
-    })
-    // console.log(history.location.pathname.charAt(history.location.pathname.length-1))
-    console.log(history.listen())
-    console.log(currentPage);
+        if(history.location.pathname!==routes.issues.path_string({page:currentPage})){
+            history.push(routes.issues.path_string({page:currentPage}))
+        }
+    },[currentPage])
+    
+    if(errors.length){
+   return  <div className="issue-list-page"  >
+   {errors.map(err=><p>{err.message}</p>)}
+</div>
+    }
     
 
-    console.log(issues)
     return (
-    <div>{loading?"Loading...":"List component"}</div>
+    <div className="issue-list-page"  >
+        {loading?"Loading...":
+            <IssueListContainer/>
+        }
+        {/* <button onClick={()=>onNext()}>next</button> */}
+        <div className="paginate" >
+        <PaginationComponent/>
+        </div>
+    </div>
     )
 }

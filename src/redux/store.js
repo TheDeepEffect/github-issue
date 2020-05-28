@@ -1,6 +1,6 @@
 import { applyMiddleware, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import {issueReducer} from "./reducers"
+import {reducers} from "./reducers"
 import {history} from "./../config/routes"
 
 export const initialState={
@@ -8,14 +8,15 @@ export const initialState={
     errors:[],
     issues:[],
     currentPage:1,
-    currentIssue:{}
+    currentIssue:{},
+    header:"Facebook/React issues"
 }
 
 
 export const configureStore = ()=>{
     const middleware=[thunk]
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-    const store = createStore(issueReducer,initialState,composeEnhancers(applyMiddleware(...middleware))
+    const store = createStore(reducers,initialState,composeEnhancers(applyMiddleware(...middleware))
          )
 
          return store;

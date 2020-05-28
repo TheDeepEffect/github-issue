@@ -20,8 +20,8 @@ export const routes={
         ...route_config.issue,
         component:IssuePage
     },
-    [route_config.pageNotFOund.id]:{
-        ...route_config.pageNotFOund,
+    [route_config.pageNotFound.id]:{
+        ...route_config.pageNotFound,
         component:PageNotFound
     }
 }

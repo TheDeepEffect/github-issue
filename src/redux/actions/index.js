@@ -1,8 +1,8 @@
 import {getIssues} from "./../../services/index"
-
+import {setCurrentPageAction} from "./currentPage"
 import {isuueLoadingAction, issueLoadSuccessAction,isuueLoadErrorAction} from "./issues"
-
-export const loadIssues=(subUrl)=>dispatch=>{
+import {setHeader} from "./header"
+const loadIssues=(subUrl)=>dispatch=>{
     dispatch({...isuueLoadingAction()});
     getIssues(subUrl).then(res=>res)
     .then(
@@ -10,3 +10,6 @@ export const loadIssues=(subUrl)=>dispatch=>{
         error=>dispatch({...isuueLoadErrorAction(error)})
     )
 }
+
+
+export {setCurrentPageAction,loadIssues,setHeader}

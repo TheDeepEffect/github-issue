@@ -1,15 +1,16 @@
 import React from 'react'
-// import { getIssues } from '../services'
-// import {useMount} from "react-use"
 import {history} from "./../config/routes"
 import { routes as routes_config } from '../config/routes_config'
+import { useSelector } from 'react-redux'
+
 
 export const Home = ()=>{
+    const {currentPage}= useSelector(state=>state)
 
     return (
-        <div>
+        <div >
             <button
-            onClick={()=>{history.push(routes_config.issues.path_string({page:'2'}))}}>
+            onClick={()=>{history.push(routes_config.issues.path_string({page:currentPage}))}}>
                 Load issues...</button>
         </div>
     )

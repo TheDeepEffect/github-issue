@@ -21,3 +21,7 @@ import axios from "axios"
  export const getIssues=(subUrl)=>{
      return get({subUrl})
  }
+
+export const getComments=(subUrl)=>{
+    return  get({subUrl});
+}

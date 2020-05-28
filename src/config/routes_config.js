@@ -29,14 +29,14 @@ export const routes={
         path:'/issues/issue/:issue_id',
         path_string:(params)=>{
             const {issue_id}=params;
-            return `/issues/${issue_id}`;
+            return `/issues/issue/${issue_id}`;
 
         },
         exact: true,
 		component: undefined,
 
     },
-    pageNotFOund:{
+    pageNotFound:{
         id:'pageNotFound',
         name:'404 no page found',
         description:"Error page",
