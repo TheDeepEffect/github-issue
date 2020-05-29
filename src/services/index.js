@@ -22,6 +22,9 @@ import axios from "axios"
      return get({subUrl})
  }
 
-export const getComments=(subUrl)=>{
-    return  get({subUrl});
+export const getComments=async(url)=>{
+    const subUrl = url.split(BASE_URL)
+    
+    const res=await  get({subUrl:subUrl[1]});
+    return res
 }

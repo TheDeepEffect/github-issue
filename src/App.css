@@ -59,3 +59,14 @@
 .list-group-item {
 	cursor: pointer;
 }
+.issues {
+	width: 90%;
+	margin: 0 auto;
+}
+.comments {
+	width: 70%;
+	margin: 0 auto;
+}
+.card {
+	padding: 1%;
+}
